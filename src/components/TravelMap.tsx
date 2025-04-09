@@ -25,10 +25,9 @@ const TravelMap: React.FC<TravelMapProps> = ({
       const iframe = document.createElement('iframe');
       iframe.width = '100%';
       iframe.height = '100%';
-      iframe.frameBorder = '0';
+      iframe.style.border = 'none'; // Using style property instead of frameBorder
+      iframe.style.margin = '0'; // Using style property instead of marginHeight/marginWidth
       iframe.scrolling = 'no';
-      iframe.marginHeight = 0;
-      iframe.marginWidth = 0;
       iframe.src = mapUrl;
       
       mapRef.current.innerHTML = '';
