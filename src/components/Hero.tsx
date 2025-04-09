@@ -7,12 +7,13 @@ import { eventDetails } from '@/utils/mockData';
 const Hero = () => {
   return (
     <div className="relative overflow-hidden bg-no-repeat bg-cover" style={{
-      backgroundImage: "url('https://images.unsplash.com/photo-1530538095376-a4936b5c6b14?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb')",
+      backgroundImage: "url('https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb')",
       height: "90vh",
       backgroundPosition: "center center",
+      backgroundSize: "cover"
     }}>
       <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
-      <div className="absolute inset-0 bg-black/20"></div>
+      <div className="absolute inset-0 bg-black/30"></div>
       
       <div className="container mx-auto px-4 relative h-full flex flex-col justify-center items-center text-center text-white">
         <div className="max-w-3xl">
