@@ -1,11 +1,30 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React from 'react';
+import Header from '@/components/Header';
+import Hero from '@/components/Hero';
+import Itinerary from '@/components/Itinerary';
+import Location from '@/components/Location';
+import Accommodation from '@/components/Accommodation';
+import Weather from '@/components/Weather';
+import TravelTips from '@/components/TravelTips';
+import CompanyInfo from '@/components/CompanyInfo';
+import BoardingPass from '@/components/BoardingPass';
+import EventChatbot from '@/components/EventChatbot';
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <div className="min-h-screen">
+      <Header />
+      <div className="pt-16">
+        <Hero />
+        <Itinerary />
+        <Location />
+        <Accommodation />
+        <Weather />
+        <TravelTips />
+        <CompanyInfo />
+        <BoardingPass />
+        <EventChatbot />
       </div>
     </div>
   );
