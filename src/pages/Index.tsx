@@ -13,7 +13,7 @@ import EventChatbot from '@/components/EventChatbot';
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <Header />
       <div className="pt-16">
         <Hero />
@@ -25,6 +25,15 @@ const Index = () => {
         <CompanyInfo />
         <BoardingPass />
         <EventChatbot />
+        
+        {/* Footer */}
+        <footer className="py-8 bg-gray-50 text-center">
+          <div className="container mx-auto px-4">
+            <p className="text-sm text-muted-foreground">
+              © {new Date().getFullYear()} Company Retreat. All rights reserved.
+            </p>
+          </div>
+        </footer>
       </div>
     </div>
   );

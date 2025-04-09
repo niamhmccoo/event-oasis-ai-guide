@@ -7,6 +7,9 @@ import TravelMap from './TravelMap';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Location = () => {
+  // Ensure we're passing a tuple, not an array
+  const coordinates: [number, number] = [locationInfo.coordinates[0], locationInfo.coordinates[1]];
+  
   return (
     <section id="location" className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
@@ -18,10 +21,10 @@ const Location = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <Card className="overflow-hidden">
+          <Card className="overflow-hidden shadow-lg border-none">
             <CardContent className="p-0">
               <TravelMap 
-                coordinates={locationInfo.coordinates} 
+                coordinates={coordinates} 
                 className="h-80 w-full" 
               />
             </CardContent>
@@ -36,7 +39,7 @@ const Location = () => {
             <Tabs defaultValue="0" className="w-full">
               <TabsList className="mb-2">
                 {locationInfo.images.map((_, i) => (
-                  <TabsTrigger key={i} value={i.toString()}>
+                  <TabsTrigger key={i} value={i.toString()} className="rounded-full px-4">
                     {i + 1}
                   </TabsTrigger>
                 ))}
@@ -47,7 +50,7 @@ const Location = () => {
                     <img 
                       src={img} 
                       alt={`${locationInfo.name} - Image ${i+1}`} 
-                      className="w-full h-60 object-cover"
+                      className="w-full h-60 object-cover rounded-lg shadow-md"
                     />
                   </div>
                 </TabsContent>

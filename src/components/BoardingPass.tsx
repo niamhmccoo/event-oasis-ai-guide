@@ -27,18 +27,18 @@ const BoardingPass = () => {
     <section id="boarding" className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="flex items-center gap-3 mb-8">
-          <div className="h-10 w-10 rounded-full gradient-bg flex items-center justify-center">
-            <Ticket className="h-5 w-5 text-white" />
+          <div className="h-10 w-10 rounded-full bg-rose-100 flex items-center justify-center">
+            <Ticket className="h-5 w-5 text-rose-500" />
           </div>
           <h2 className="text-3xl font-bold">Your Boarding Passes</h2>
         </div>
 
         {!authenticated ? (
-          <Card className="max-w-md mx-auto">
-            <CardHeader>
+          <Card className="max-w-md mx-auto border-none shadow-lg rounded-2xl overflow-hidden">
+            <CardHeader className="bg-rose-50">
               <CardTitle className="text-center">Access Your Travel Documents</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-6">
               <div className="space-y-4">
                 <p className="text-sm text-center text-muted-foreground">
                   Enter your username to access your personalized boarding passes and hotel bookings.
@@ -47,8 +47,9 @@ const BoardingPass = () => {
                   placeholder="Your username" 
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
+                  className="rounded-full"
                 />
-                <Button className="w-full gradient-bg" onClick={handleLogin}>
+                <Button className="w-full bg-rose-500 hover:bg-rose-600 rounded-full" onClick={handleLogin}>
                   Access Documents
                 </Button>
                 <p className="text-xs text-center text-muted-foreground">
@@ -62,8 +63,8 @@ const BoardingPass = () => {
             <h3 className="text-xl font-semibold">Your Flight Information</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {boardingPasses.map((pass, index) => (
-                <Card key={index} className="overflow-hidden">
-                  <div className="bg-primary/10 p-4 flex justify-between items-center border-b">
+                <Card key={index} className="overflow-hidden border-none shadow-lg rounded-2xl hover-lift">
+                  <div className="bg-rose-50 p-4 flex justify-between items-center border-b">
                     <div>
                       <h4 className="font-medium">{pass.airline}</h4>
                       <p className="text-sm text-muted-foreground">Flight {pass.flight}</p>
@@ -97,7 +98,7 @@ const BoardingPass = () => {
                         <p className="text-sm text-muted-foreground">Boarding</p>
                         <p>{pass.boardingTime}</p>
                       </div>
-                      <Button variant="outline" className="flex gap-2 items-center">
+                      <Button variant="outline" className="flex gap-2 items-center rounded-full hover:bg-rose-50 hover:text-rose-500 hover:border-rose-200">
                         <Download className="h-4 w-4" />
                         <span>Download</span>
                       </Button>
@@ -108,7 +109,7 @@ const BoardingPass = () => {
             </div>
             
             <div className="mt-8 text-center">
-              <Button variant="ghost" onClick={() => setAuthenticated(false)}>
+              <Button variant="ghost" onClick={() => setAuthenticated(false)} className="text-rose-500 hover:bg-rose-50 hover:text-rose-600">
                 Log Out
               </Button>
             </div>

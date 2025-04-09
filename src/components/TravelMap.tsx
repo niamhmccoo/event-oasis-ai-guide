@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 
 interface TravelMapProps {
-  coordinates: [number, number];
+  coordinates: [number, number];  // Fixed to tuple type
   className?: string;
   zoom?: number;
 }
@@ -34,7 +34,7 @@ const TravelMap: React.FC<TravelMapProps> = ({
       mapRef.current.innerHTML = '';
       mapRef.current.appendChild(iframe);
     }
-  }, [coordinates]);
+  }, [coordinates, zoom]);
 
   return (
     <div ref={mapRef} className={className}></div>

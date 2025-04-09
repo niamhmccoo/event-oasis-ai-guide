@@ -8,6 +8,9 @@ import { locationInfo } from '@/utils/mockData';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Accommodation = () => {
+  // Ensure we're passing a tuple, not an array
+  const coordinates: [number, number] = [locationInfo.coordinates[0], locationInfo.coordinates[1]];
+  
   return (
     <section id="accommodation" className="py-16 bg-white">
       <div className="container mx-auto px-4">
@@ -26,11 +29,11 @@ const Accommodation = () => {
             <div className="mb-6">
               <h4 className="font-medium mb-3">Check-in/Check-out Times</h4>
               <div className="grid grid-cols-2 gap-4">
-                <div>
+                <div className="p-3 bg-gray-50 rounded-lg">
                   <p className="text-sm text-muted-foreground">Check-in</p>
                   <p className="font-medium">{accommodationInfo.checkInTime}</p>
                 </div>
-                <div>
+                <div className="p-3 bg-gray-50 rounded-lg">
                   <p className="text-sm text-muted-foreground">Check-out</p>
                   <p className="font-medium">{accommodationInfo.checkOutTime}</p>
                 </div>
@@ -39,9 +42,9 @@ const Accommodation = () => {
             
             <div>
               <h4 className="font-medium mb-3">Amenities</h4>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-2 gap-y-3 gap-x-4">
                 {accommodationInfo.amenities.map((amenity, index) => (
-                  <div key={index} className="flex items-center gap-2">
+                  <div key={index} className="flex items-center gap-2 p-2 bg-gray-50 rounded-lg">
                     <Check className="h-4 w-4 text-primary" />
                     <span>{amenity}</span>
                   </div>
@@ -55,7 +58,7 @@ const Accommodation = () => {
             <Tabs defaultValue="0" className="w-full">
               <TabsList className="mb-2">
                 {accommodationInfo.images.map((_, i) => (
-                  <TabsTrigger key={i} value={i.toString()}>
+                  <TabsTrigger key={i} value={i.toString()} className="rounded-full px-4">
                     {i + 1}
                   </TabsTrigger>
                 ))}
@@ -66,7 +69,7 @@ const Accommodation = () => {
                     <img 
                       src={img} 
                       alt={`Room - Image ${i+1}`} 
-                      className="w-full h-60 object-cover"
+                      className="w-full h-60 object-cover rounded-lg shadow-md"
                     />
                   </div>
                 </TabsContent>
@@ -74,10 +77,10 @@ const Accommodation = () => {
             </Tabs>
             
             <div className="mt-6">
-              <Card className="overflow-hidden">
+              <Card className="overflow-hidden border-none shadow-lg">
                 <CardContent className="p-0">
                   <TravelMap 
-                    coordinates={locationInfo.coordinates} 
+                    coordinates={coordinates} 
                     className="h-60 w-full" 
                     zoom={16}
                   />

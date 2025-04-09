@@ -4,7 +4,7 @@ import { SendHorizontal, X, Bot, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
-import { aiTravelTips, eventDetails, locationInfo } from '@/utils/mockData';
+import { aiTravelTips, eventDetails, locationInfo, accommodationInfo } from '@/utils/mockData';
 
 type Message = {
   content: string;
@@ -16,7 +16,7 @@ const EventChatbot = () => {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState<Message[]>([
     { 
-      content: `Hello! I'm your Event Oasis AI assistant for the ${eventDetails.name}. How can I help you today?`,
+      content: `Hi there! I'm your AI travel buddy for the ${eventDetails.name}. How can I help you today?`,
       sender: 'bot'
     }
   ]);
@@ -83,7 +83,7 @@ const EventChatbot = () => {
     <>
       {/* Chat Button */}
       <Button
-        className={`fixed right-6 bottom-6 w-12 h-12 rounded-full shadow-lg gradient-bg text-white flex items-center justify-center ${isOpen ? 'rotate-90' : ''}`}
+        className={`fixed right-6 bottom-6 w-12 h-12 rounded-full shadow-lg ${isOpen ? 'bg-rose-100 text-rose-500' : 'bg-rose-500 text-white'} flex items-center justify-center transition-all duration-300`}
         onClick={() => setIsOpen(!isOpen)}
       >
         {isOpen ? <X /> : <Bot />}
@@ -91,13 +91,13 @@ const EventChatbot = () => {
       
       {/* Chat Window */}
       {isOpen && (
-        <Card className="fixed right-6 bottom-20 w-full max-w-[360px] max-h-[500px] shadow-lg flex flex-col">
-          <div className="gradient-bg p-3 text-white rounded-t-lg flex justify-between items-center">
+        <Card className="fixed right-6 bottom-20 w-full max-w-[360px] max-h-[500px] shadow-lg flex flex-col rounded-2xl border-none">
+          <div className="bg-rose-100 p-3 text-rose-800 rounded-t-2xl flex justify-between items-center">
             <div className="flex items-center gap-2">
               <Bot className="h-5 w-5" />
-              <span className="font-medium">Event AI Assistant</span>
+              <span className="font-medium">Travel Buddy</span>
             </div>
-            <Button variant="ghost" className="h-8 w-8 p-0 text-white" onClick={() => setIsOpen(false)}>
+            <Button variant="ghost" className="h-8 w-8 p-0 text-rose-800 hover:bg-rose-200" onClick={() => setIsOpen(false)}>
               <X className="h-4 w-4" />
             </Button>
           </div>
@@ -110,10 +110,10 @@ const EventChatbot = () => {
                   className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   <div 
-                    className={`max-w-[80%] rounded-lg p-3 ${
+                    className={`max-w-[80%] rounded-2xl p-3 ${
                       msg.sender === 'user' 
-                        ? 'bg-primary text-white' 
-                        : 'bg-secondary/10 text-foreground'
+                        ? 'bg-rose-500 text-white' 
+                        : 'bg-rose-100 text-rose-800'
                     }`}
                   >
                     {msg.content}
@@ -122,7 +122,7 @@ const EventChatbot = () => {
               ))}
               {isTyping && (
                 <div className="flex justify-start">
-                  <div className="bg-secondary/10 text-foreground max-w-[80%] rounded-lg p-3 flex items-center gap-1">
+                  <div className="bg-rose-100 text-rose-800 max-w-[80%] rounded-2xl p-3 flex items-center gap-1">
                     <Loader2 className="h-4 w-4 animate-spin" />
                     <span>Typing...</span>
                   </div>
@@ -138,11 +138,11 @@ const EventChatbot = () => {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   onKeyPress={handleKeyPress}
-                  className="flex-grow"
+                  className="flex-grow rounded-full border-rose-200 focus-visible:ring-rose-500"
                 />
                 <Button 
                   onClick={handleSend} 
-                  className="gradient-bg"
+                  className="bg-rose-500 hover:bg-rose-600 rounded-full"
                   disabled={!message.trim() || isTyping}
                 >
                   <SendHorizontal className="h-5 w-5" />
